@@ -20,7 +20,7 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title @click="goVuetifyForm">Home</v-list-item-title>
+            <v-list-item-title @click="goVuetifyForm">Form</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
@@ -37,8 +37,6 @@
       color="deep-purple"
       dark
       app
-      elevate-on-scroll
-      scroll-target="#scrolling-techniques-7"
     >
       <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
