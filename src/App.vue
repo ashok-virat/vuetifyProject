@@ -20,7 +20,7 @@
             <v-list-item-icon>
               <v-icon>mdi-home</v-icon>
             </v-list-item-icon>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title @click="goVuetifyForm">Home</v-list-item-title>
           </v-list-item>
 
           <v-list-item>
@@ -56,8 +56,13 @@
     </v-container>
   </v-main>
 
-  <v-footer app>
-    <!-- -->
+   <v-footer padless app>
+    <v-col
+      class="text-center"
+      cols="12"
+    >
+      {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+    </v-col>
   </v-footer>
 </v-app>
 </template>
@@ -72,5 +77,10 @@ export default {
       drawer: false,
       group: null,
   }),
+  methods: {
+    goVuetifyForm:function() {
+        this.$router.push('/vuetify/form')
+    }
+  }
 };
 </script>
