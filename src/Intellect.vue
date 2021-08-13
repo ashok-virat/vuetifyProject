@@ -131,11 +131,11 @@
       <validation-provider
         v-slot="{ errors }"
         name="Name"
-        rules="required|max:10"
+        rules="required|max:15"
       >
         <v-text-field
           v-model="name"
-          :counter="10"
+          :counter="15"
           :error-messages="errors"
           label="Asset Name"
           required
@@ -144,12 +144,12 @@
       <validation-provider
         v-slot="{ errors }"
         name="description"
-         rules="required|max:30"
+         rules="required|max:50"
       >
         <v-text-field
           v-model="description"
           :error-messages="errors"
-           :counter="30"
+           :counter="50"
           label="Description"
           required
         ></v-text-field>
@@ -311,6 +311,7 @@
       <v-list>
         <v-list-item
         style="cursor:pointer"
+        @click="editItem(index,item)"
         >
           <v-list-item-title>
               <v-btn
@@ -347,14 +348,6 @@
     </template>
   </v-simple-table>
         </v-col>
-
-
-
-
-
-
-
-
  <v-container app fluid class="mt-1">
     <v-toolbar flat>
       <v-toolbar-title>
@@ -540,6 +533,8 @@ export default {
       status: '',
       version: '',
       select: null,
+      edit:false,
+      editableDataIndex: -1,
       dropdownItems: [
         { title: 'Delete' },
           { title: 'Edit' },
@@ -585,7 +580,7 @@ export default {
         desserts: [
           {
             name: 'Frozen Yogurt',
-            description : 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. ',
+            description : 'Lorem Ipsum is simply dummy text of the printing',
             status: 'training completed',
             version: 10 ,
             modifiedAt: '04/12/2222, 3:00 PM',
@@ -598,6 +593,15 @@ export default {
           deleteItem: function(index) {
             this.desserts.splice(index,1)
           },
+          editItem : function(index,data) {
+            this.editableDataIndex = index
+            this.edit = true
+            this.name = data.name
+            this.description = data.description
+            this.status = data.status
+            this.version = data.version
+            this.dialog = true
+          },
       submit () {
         this.$refs.observer.validate()
         console.log(this.name,this.description,this.status,this.version)
@@ -609,12 +613,19 @@ export default {
             modifiedAt: '04/12/2222, 3:07 PM',
             modifiedby: 'ashok',
         }
+        if(!this.edit) {
         this.desserts.push(newAsset);
+        } else {
+          this.desserts.splice(this.editableDataIndex,1,newAsset)
+        }
         this.$refs.form.reset()
+          this.$refs.observer.reset()
         this.dialog = false
+        this.edit = false
+        this.editableDataIndex = -1
       },
       clear () {
-            this.$refs.form.reset()
+        this.$refs.form.reset()
         this.$refs.observer.reset()
         this.dialog = false
       },
