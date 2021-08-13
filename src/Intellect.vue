@@ -29,22 +29,6 @@
         <h4 class="font-weight-bold idx">IDX</h4>
       </v-toolbar>
     </v-col>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <v-col cols="12"  class="ma-0 pa-0 mt-2">
      <v-card
     color="grey lighten-4"
