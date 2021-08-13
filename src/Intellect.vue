@@ -291,7 +291,6 @@
           <v-list-item-title>
               <v-btn
               plain
-      style="backgroundColor:white"
     >
       <v-icon left>
         mdi-pencil
