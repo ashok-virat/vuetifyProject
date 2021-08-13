@@ -276,8 +276,8 @@
       </thead>
       <tbody>
         <tr
-          v-for="item in desserts"
-          :key="item.name"
+          v-for="(item,index) in desserts"
+          :key="index"
         >
         <td>
          <v-btn
@@ -299,9 +299,48 @@
               <td>{{ item.version }}</td>
                 <td>{{ item.modifiedAt }}</td>
                   <td>{{ item.modifiedby }}</td>
-                  <td>  <v-btn icon>
+                  <td>
+    <v-menu offset-y>
+      <template v-slot:activator="{ on, attrs }">
+           <v-btn icon  
+          v-bind="attrs"
+          v-on="on">
         <v-icon>mdi-dots-vertical</v-icon>
       </v-btn>
+      </template>
+      <v-list>
+        <v-list-item
+        style="cursor:pointer"
+        >
+          <v-list-item-title>
+              <v-btn
+              plain
+      style="backgroundColor:white"
+    >
+      <v-icon left>
+        mdi-pencil
+      </v-icon>
+      Edit
+    </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+             <v-list-item
+        style="cursor:pointer"
+        >
+          <v-list-item-title @click="deleteItem(item)">
+                <v-btn
+              plain
+      style="backgroundColor:white"
+    >
+      <v-icon left>
+        mdi-cancel
+      </v-icon>
+      Delete
+    </v-btn>
+          </v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
                   </td>
         </tr>
       </tbody>
@@ -443,41 +482,12 @@
       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
       </p>
           </v-flex>
-
-
-
-
                  <v-flex xs6 sm4 md3 xl2 class="lg5-custom ma-2" style="backgroundColor:#fafafa">
     
             <div class="text-center blue--text"  style="fontSize:10px;fontWeight:bold;marginTop:80px">Explore more in marketplace</div>
           </v-flex>
-
-
-
-
-
-
-        </v-layout>
+ </v-layout>
   </v-container>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </v-tab-item>
       </v-tabs-items>
     </v-col>
@@ -530,6 +540,10 @@ export default {
       status: '',
       version: '',
       select: null,
+      dropdownItems: [
+        { title: 'Delete' },
+          { title: 'Edit' },
+      ],
       items: [
         'Training Completed',
         'Published'
@@ -581,6 +595,9 @@ export default {
       }
     },
         methods: {
+          deleteItem: function(index) {
+            this.desserts.splice(index,1)
+          },
       submit () {
         this.$refs.observer.validate()
         console.log(this.name,this.description,this.status,this.version)
