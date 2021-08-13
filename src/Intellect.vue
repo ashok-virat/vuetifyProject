@@ -29,6 +29,22 @@
         <h4 class="font-weight-bold idx">IDX</h4>
       </v-toolbar>
     </v-col>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <v-col cols="12"  class="ma-0 pa-0 mt-2">
      <v-card
     color="grey lighten-4"
@@ -37,7 +53,6 @@
     :elevation="0"
   >
     <v-toolbar dense>
-
       <v-toolbar-title>
            <v-tabs   v-model="tab"
   >
@@ -50,8 +65,16 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-     
+       <v-menu class="hidden-md-and-up">
+          <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
+          <v-list>
+            <v-list-tile >
+              <v-list-tile-content>
+                <v-list-tile-title>hi</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+          </v-list>
+        </v-menu>
          <v-btn
         class="blue--text text-capitalize"
         small
@@ -172,7 +195,7 @@
       </v-btn>
     </v-form>
   </validation-observer>
-        </v-col>
+</v-col>
             </v-row>
           </v-container>
         </v-card-text>
@@ -420,12 +443,20 @@
       Lorem Ipsum has been the industry's standard dummy text ever since the 1500s
       </p>
           </v-flex>
-          <v-flex xs6 sm4 md3 xl2 class="lg5-custom ma-2">
-            <v-card class="blue"><v-card-text>Box 4</v-card-text></v-card>
+
+
+
+
+                 <v-flex xs6 sm4 md3 xl2 class="lg5-custom ma-2" style="backgroundColor:#fafafa">
+    
+            <div class="text-center blue--text"  style="fontSize:10px;fontWeight:bold;marginTop:80px">Explore more in marketplace</div>
           </v-flex>
-          <v-flex xs6 sm4 md3 xl2 class="lg5-custom ma-2">
-            <v-card class="blue"><v-card-text>Box 5</v-card-text></v-card>
-          </v-flex>
+
+
+
+
+
+
         </v-layout>
   </v-container>
 
