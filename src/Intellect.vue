@@ -65,16 +65,7 @@
       </v-toolbar-title>
 
       <v-spacer></v-spacer>
-       <v-menu class="hidden-md-and-up">
-          <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
-          <v-list>
-            <v-list-tile >
-              <v-list-tile-content>
-                <v-list-tile-title>hi</v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-menu>
+  
          <v-btn
         class="blue--text text-capitalize"
         small
